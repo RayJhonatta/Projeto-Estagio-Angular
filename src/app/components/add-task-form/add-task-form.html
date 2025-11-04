@@ -1,0 +1,10 @@
+<form [formGroup]="taskForm" (ngSubmit)="onSubmit()" class="space-y-4">
+     <h1 class="title">Crie a Tarefa</h1>
+    <label for="form-title">Titulo: 
+        <input type="text" formControlName="title" id="title" class="input-form-title">
+    </label>
+    <label for="form-description">Descrição:
+        <input type="text" formControlName="description" id="description" class="input-form-description">
+    </label>
+    <button type="submit" [disabled]="taskForm.invalid" class="button-form">Enviar</button>
+</form>
