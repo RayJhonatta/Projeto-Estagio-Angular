@@ -1,12 +1,15 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task';
 import { Task } from '../../models/task.model';
+import { CommonModule } from '@angular/common';
+import { AddTaskForm } from "../add-task-form/add-task-form";
 
 @Component({
   selector: 'app-task-list',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, AddTaskForm],
   templateUrl: './task-list.html',
-  styleUrl: './task-list.css',
+  styleUrls: ['./task-list.css'],
 })
 
 export class TaskList implements OnInit {

@@ -10,7 +10,7 @@ import { NewTask } from '../models/task.model';
 })
 export class TaskService {
 
-  private readonly API_URL = '/api/tasks';
+  private readonly API_URL = 'http://127.0.0.1:8000/api/tasks';
 
   private http = inject(HttpClient);
 
