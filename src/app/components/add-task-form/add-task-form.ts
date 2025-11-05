@@ -22,15 +22,10 @@
       'description': ['', Validators.required], 
     })
 
-    public feedbackMessage: string = '';
-    public isSuccess: boolean = false;
-    public isError: boolean = false;
-
     onSubmit() {
 
       if (this.taskForm.invalid) {
-        this.feedbackMessage = 'Por favor, preencha todos os campos obrigatórios.';
-        this.isError = true;
+        console.log('Formulário inválido, por favor verifique os campos.');
         return;
       } 
       
@@ -41,13 +36,11 @@
 
       this.taskService.addTask(newTask).subscribe({
         next: (response) => {
-          this.feedbackMessage = 'Tarefa adicionada com sucesso!';
-          this.isSuccess = true;
+          console.log('Tarefa adicionada com sucesso:', response);
           this.taskForm.reset();
         },
         error: (error) => {
-          this.feedbackMessage = 'Erro ao adicionar a tarefa. Tente novamente.';
-          this.isError = true;
+          console.error('Erro ao adicionar tarefa:', error);
         }
       });
     }

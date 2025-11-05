@@ -2,12 +2,11 @@ import { Component, inject, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task';
 import { Task } from '../../models/task.model';
 import { CommonModule } from '@angular/common';
-import { AddTaskForm } from "../add-task-form/add-task-form";
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule, AddTaskForm],
+  imports: [CommonModule],
   templateUrl: './task-list.html',
   styleUrls: ['./task-list.css'],
 })
