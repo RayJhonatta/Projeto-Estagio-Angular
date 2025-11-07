@@ -1,3 +1,4 @@
+<meta charset="UTF-8">
 <div>
     <h2>Lista de Tarefas</h2>
     <table>
@@ -18,8 +19,20 @@
                     <td>
                         {{task.description}}
                     </td>
-                    <td>
+                    <td id="task-completed">
                         {{task.completed ? 'Concluída' : 'Pendente'}}
+                    </td>
+                    <td>
+                        <div id="button">
+                            <button type="button" id="button-edit">
+                                <span class="icon">✏️</span>
+                                Editar
+                            </button>
+                            <button type="button" id="button-delete">
+                                <span class="icon">🗑️</span>
+                                Excluir
+                            </button>
+                        </div>
                     </td>
                 </tr>   
             }
@@ -27,7 +40,7 @@
                 <tr>
                     <td colspan="4" style="text-align: center; padding: 15px; background-color: #f8f8f8;">
                         <p style="margin: 0;">Nenhuma tarefa encontrada.</p>
-                        <p style="margin: 0; font-size: 0.9em;">Comece adicionando uma nova tarefa.</p>
+                        <p style="margin: 0; font-size: 0.9em;">Comece adicionando uma nova tarefa.</p> 
                     </td>
                 </tr>
             }
