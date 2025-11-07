@@ -15,10 +15,24 @@ export class TaskList implements OnInit {
 
   private service = inject(TaskService);
   tasks: Task[] = [];
+status: any;
+description: any;
+title: any;
 
   ngOnInit(): void {
-    this.service.getTasks().subscribe((data: Task[]) => {
-      this.tasks = data;
+    this.fetchTasks();
+  }
+
+  fetchTasks(): void {
+    this.service.getTasks().subscribe({
+      next: (response: any) => {
+        const taskArray: Task[] = response.data || response;
+        this.tasks = taskArray;
+      },
+      error: (error) => {
+        console.error('Erro ao buscar tarefas::', error);
+        this.tasks = [];
+      }
     });
   }
 }

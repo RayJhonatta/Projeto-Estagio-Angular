@@ -3,11 +3,12 @@
   import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
   import { NewTask } from '../../models/task.model';
   import { CommonModule } from '@angular/common';
+  import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
   @Component({
     selector: 'app-add-task-form',
     standalone: true,
-    imports: [ReactiveFormsModule, CommonModule],
+    imports: [ReactiveFormsModule, CommonModule, MatSnackBarModule],
     templateUrl: './add-task-form.html',
     styleUrls: ['./add-task-form.css'],
   })
@@ -16,6 +17,7 @@
 
     private taskService = inject(TaskService);
     private formBuilder = inject(FormBuilder);
+    private snackBar = inject(MatSnackBar);
 
     taskForm = this.formBuilder.group({
       'title': ['', Validators.required],
@@ -25,7 +27,10 @@
     onSubmit() {
 
       if (this.taskForm.invalid) {
-        console.log('Formulário inválido, por favor verifique os campos.');
+        this.snackBar.open('Formulário inválido! Verifique os campos.', 'Fechar', {
+          duration: 3000,
+          panelClass: ['error-snackbar']
+        });
         return;
       } 
       
@@ -35,12 +40,18 @@
       }
 
       this.taskService.addTask(newTask).subscribe({
-        next: (response) => {
-          console.log('Tarefa adicionada com sucesso:', response);
+        next: () => {
+          this.snackBar.open('Tarefa adicionada com sucesso!', 'Fechar', {
+            duration: 3000,
+            panelClass: ['success-snackbar']
+          });
           this.taskForm.reset();
         },
-        error: (error) => {
-          console.error('Erro ao adicionar tarefa:', error);
+        error: () => {
+          this.snackBar.open('Erro ao adicionar tarefa. Tente novamente.', 'Fechar', {
+            duration: 3000,
+            panelClass: ['error-snackbar']
+          });
         }
       });
     }

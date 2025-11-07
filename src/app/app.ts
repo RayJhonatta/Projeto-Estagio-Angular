@@ -5,7 +5,7 @@ import { TaskList } from "./components/task-list/task-list";
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [AddTaskForm],
+  imports: [AddTaskForm, TaskList],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
