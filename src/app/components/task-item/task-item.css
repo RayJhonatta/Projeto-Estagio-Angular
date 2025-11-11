@@ -1,0 +1,126 @@
+/* src/app/components/task-item/task-item.css */
+
+td {
+    border: 2px solid black;
+}
+
+#task-completed {
+    text-align: center;
+}
+
+/* Estilos de Botões de Visualização (Editar/Excluir) */
+td > #button {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+#button > #button-edit {
+    background-color: #007BFF;
+    border: none;
+    width: 100px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+    color: white;
+    height: 30px;
+}
+
+#button > #button-edit:hover {
+    background-color: #0056b3;
+}
+
+#button > #button-delete {
+    background-color: #DC3545;
+    border: none;
+    width: 100px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    font-size: 1em;
+    color: white;
+    height: 30px;
+}
+
+#button > #button-delete:hover {
+    background-color: #a71d2a;
+}
+
+/* 🔑 MODO EDIÇÃO: CONTAINER PRINCIPAL COM CSS GRID */
+td > form > .edit-row {
+    display: grid;
+    /* Ajuste fino das larguras das colunas: Título(2.5), Descrição(3.5), Status(1), Ação(1.5) */
+    grid-template-columns: 2.5fr 3.5fr 1fr 1.5fr; 
+    gap: 10px; 
+    padding: 5px; 
+    align-items: center;
+}
+
+/* Estilos das Células de Input (Título e Descrição) */
+.edit-row > .title-cell,
+.edit-row > .description-cell {
+    display: flex;
+    flex-direction: column; 
+    padding: 0 5px; 
+}
+
+/* Garante que os inputs preencham 100% da largura da célula e têm tamanho fixo */
+.edit-row input[type="text"] {
+    width: 100%;
+    height: 30px; 
+    padding: 3px 5px; 
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* 🔑 Célula de Status (Tarefa Completa?) - Coluna 3 */
+.edit-row > .status-cell {
+    display: flex;
+    flex-direction: row; /* Label e Checkbox lado a lado */
+    justify-content: center; /* Centraliza na coluna */
+    align-items: center;
+}
+.edit-row > .status-cell label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* 🔑 Célula de Ação (Botões Salvar/Cancelar) - Coluna 4 */
+.edit-row > .action-cell {
+    display: flex;
+    gap: 5px;
+    justify-content: flex-end; /* Alinha à direita da coluna */
+    align-items: center;
+}
+
+/* Estilos dos Botões de Ação (Salvar/Cancelar) */
+.action-cell > .button-save,
+.action-cell > .button-cancel {
+    height: 30px; 
+    font-size: 0.9em; 
+    padding: 0 8px; 
+    border-radius: 5px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.action-cell > .button-save {
+    background-color: #28A745;
+}
+
+.action-cell > .button-save:hover {
+    background-color: #1e7e34;
+}
+
+.action-cell > .button-cancel {
+    background-color: #6C757D;
+}
+
+.action-cell > .button-cancel:hover {
+    background-color: #565e64;
+}

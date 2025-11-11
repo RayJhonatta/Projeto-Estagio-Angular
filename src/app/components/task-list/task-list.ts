@@ -2,12 +2,12 @@ import { Component, inject, OnInit } from '@angular/core';
 import { TaskService } from '../../services/task';
 import { Task } from '../../models/task.model';
 import { CommonModule } from '@angular/common';
-import { Router } from '@angular/router';
+import { TaskItem } from '../task-item/task-item';
 
 @Component({
   selector: 'app-task-list',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, TaskItem],
   templateUrl: './task-list.html',
   styleUrls: ['./task-list.css'],
 })
@@ -15,12 +15,7 @@ import { Router } from '@angular/router';
 export class TaskList implements OnInit {
 
   private service = inject(TaskService);
-  private router = inject(Router);
   tasks: Task[] = [];
-
-  goToEdit(id: number): void {
-    this.router.navigate(['/tasks/edit', id]);
-  }
 
   ngOnInit(): void {
     this.fetchTasks();

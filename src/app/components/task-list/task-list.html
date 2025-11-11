@@ -1,4 +1,4 @@
-<meta charset="UTF-8">
+
 <div>
     <h2>Lista de Tarefas</h2>
     <table>
@@ -12,29 +12,10 @@
         </thead>
         <tbody>
             @for (task of tasks; track task.id) {
-                <tr>
-                    <td>
-                        {{task.title}}
-                    </td>
-                    <td>
-                        {{task.description}}
-                    </td>
-                    <td id="task-completed">
-                        {{task.completed ? 'Concluída' : 'Pendente'}}
-                    </td>
-                    <td>
-                        <div id="button">
-                            <button type="button" id="button-edit">
-                                <span class="icon">✏️</span>
-                                Editar
-                            </button>
-                            <button type="button" id="button-delete">
-                                <span class="icon">🗑️</span>
-                                Excluir
-                            </button>
-                        </div>
-                    </td>
-                </tr>   
+                <tr appTaskItem 
+                    [task]="task" 
+                    (taskDeleted)="fetchTasks()">
+                </tr> 
             }
             @empty {
                 <tr>
