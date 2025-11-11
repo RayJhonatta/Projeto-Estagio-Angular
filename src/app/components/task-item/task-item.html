@@ -18,12 +18,11 @@
 
 <ng-container *ngIf="isEditing">
     <td colspan="4">
-        <form [formGroup]="editForm" (ngSubmit)="onSave()" class="inline-edit-form">
-            
+        <form [formGroup]="editForm" (ngSubmit)="onSave()" class="inline-edit-form"> 
             <div class="edit-row">
                 
                 <div class="title-cell">
-                    <label for="title-edit">Título:
+                    <label for="title-edit" class="label-title">Título:
                         <input type="text" formControlName="title" id="title-edit" class="input-title" required>
                     </label>
                 </div>

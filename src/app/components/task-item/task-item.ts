@@ -27,7 +27,7 @@ export class TaskItem {
   onEdit(): void {
     this.editForm = this.fb.group({
         title: [this.task.title, Validators.required],
-        description: [this.task.description],
+        description: [this.task.description, Validators.required],
         completed: [this.task.completed || false], 
     });
     this.isEditing = true;
@@ -48,7 +48,7 @@ export class TaskItem {
 
     this.service.updateTask(updatedTask).subscribe({
         next: (savedTask) => {
-            this.task = savedTask; 
+            this.task = savedTask;  
             this.isEditing = false;
             this.snackBar.open('Tarefa atualizada com sucesso!', 'Fechar', {
               duration: 3000,
