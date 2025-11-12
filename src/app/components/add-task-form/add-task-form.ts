@@ -36,7 +36,7 @@
       
       const newTask: NewTask = {
         title: this.taskForm.value.title!,
-        description: this.taskForm.value.description || '',
+        description: this.taskForm.value.description!,
       }
 
       this.taskService.addTask(newTask).subscribe({
