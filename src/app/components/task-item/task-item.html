@@ -1,51 +1,55 @@
-<ng-container *ngIf="!isEditing">
-    <td>{{task.title}}</td>
-    <td>{{task.description}}</td>
-    <td id="task-completed">
-        {{task.completed ? 'Concluída' : 'Pendente'}}
-    </td>
-    <td>
-        <div id="button">
-            <button type="button" (click)="onEdit()" id="button-edit">
-                <span class="icon">✏️</span> Editar
-            </button>
-            <button type="button" (click)="onDelete()" id="button-delete">
-                <span class="icon">🗑️</span> Excluir
-            </button>
-        </div>
-    </td>
-</ng-container>
-
-<ng-container *ngIf="isEditing">
-    <td colspan="4">
-        <form [formGroup]="editForm" (ngSubmit)="onSave()" class="inline-edit-form"> 
-            <div class="edit-row">
-                
-                <div class="title-cell">
-                    <label for="title-edit" class="label-title">Título:
-                        <input type="text" formControlName="title" id="title-edit" class="input-title" required>
-                    </label>
-                </div>
-                
-                <div class="description-cell">
-                    <label for="description-edit">Descrição: 
-                        <input type="text" formControlName="description" id="description-edit" class="input-description">
-                    </label>
-                </div>
-                
-                <div class="status-cell">
-                    <label for="completed-edit">Tarefa Completa?
-                        <input type="checkbox" formControlName="completed" id="completed-edit" class="input-checkbox">
-                    </label>
-                </div>
-                
-                <div class="action-cell">
-                    <button type="submit" class="button-save" [disabled]="editForm.invalid">Salvar alterações</button>
-                    <button type="button" class="button-cancel" (click)="onCancel()">Cancelar alterações</button>
-                </div>
-                
+@if (!isEditing) {
+    <ng-container>
+        <td>{{task.title}}</td>
+        <td>{{task.description}}</td>
+        <td id="task-completed">
+            {{task.completed ? 'Concluída' : 'Pendente'}}
+        </td>
+        <td>
+            <div id="button">
+                <button type="button" (click)="onEdit()" id="button-edit">
+                    <span class="icon">✏️</span> Editar
+                </button>
+                <button type="button" (click)="onDelete()" id="button-delete">
+                    <span class="icon">🗑️</span> Excluir
+                </button>
             </div>
-            
-        </form>
-    </td>
-</ng-container>
+        </td>
+    </ng-container>
+}
+
+@if (isEditing) {
+    <ng-container>
+        <td colspan="4">
+            <form [formGroup]="editForm" (ngSubmit)="onSave()" class="inline-edit-form"> 
+                <div class="edit-row">
+                    
+                    <div class="title-cell">
+                        <label for="title-edit" class="label-title">Título:
+                            <input type="text" formControlName="title" id="title-edit" class="input-title" required>
+                        </label>
+                    </div>''';
+                    
+                    <div class="description-cell">
+                        <label for="description-edit">Descrição: 
+                            <input type="text" formControlName="description" id="description-edit" class="input-description">
+                        </label>
+                    </div>
+                    
+                    <div class="status-cell">
+                        <label for="completed-edit">Tarefa Completa?
+                            <input type="checkbox" formControlName="completed" id="completed-edit" class="input-checkbox">
+                        </label>
+                    </div>
+                    
+                    <div class="action-cell">
+                        <button type="submit" class="button-save" [disabled]="editForm.invalid">Salvar alterações</button>
+                        <button type="button" class="button-cancel" (click)="onCancel()">Cancelar alterações</button>
+                    </div>
+                    
+                </div>
+                
+            </form>
+        </td>
+    </ng-container>
+}

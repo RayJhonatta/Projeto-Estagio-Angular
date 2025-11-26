@@ -13,7 +13,6 @@ import { TaskItem } from '../task-item/task-item';
 })
 
 export class TaskList implements OnInit {
-
   private service = inject(TaskService);
   tasks: Task[] = [];
 

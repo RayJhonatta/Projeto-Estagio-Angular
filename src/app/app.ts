@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, signal, ViewChild } from '@angular/core';
 import { RouterOutlet } from "@angular/router";
 import { AddTaskForm } from "./components/add-task-form/add-task-form";
 import { TaskList } from "./components/task-list/task-list";
@@ -12,4 +12,12 @@ import { TaskList } from "./components/task-list/task-list";
 })
 export class App {
   protected readonly title = signal('Projeto-Estagio-Angular');
+  protected taskAdded: boolean = false;
+  @ViewChild('taskList') taskListRef: any;
+
+  refreshList(event: any) {
+    if (event) {
+      this.taskListRef.fetchTasks();
+    }
+  }
 }

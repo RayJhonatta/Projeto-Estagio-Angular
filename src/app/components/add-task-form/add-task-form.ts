@@ -1,4 +1,4 @@
-  import { Component, inject } from '@angular/core';
+  import { Component, EventEmitter, inject, Output } from '@angular/core';
   import { TaskService } from '../../services/task';
   import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
   import { NewTask } from '../../models/task.model';
@@ -18,6 +18,7 @@
     private taskService = inject(TaskService);
     private formBuilder = inject(FormBuilder);
     private snackBar = inject(MatSnackBar);
+    @Output() taskAdded = new EventEmitter<boolean>();
 
     taskForm = this.formBuilder.group({
       'title': ['', Validators.required],
@@ -46,6 +47,7 @@
             panelClass: ['success-snackbar']
           });
           this.taskForm.reset();
+          this.taskAdded.emit(true);
         },
         error: () => {
           this.snackBar.open('Erro ao adicionar tarefa. Tente novamente.', 'Fechar', {
